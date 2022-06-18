@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {ListItem, ListLoader} from '../components';
 
 const Fragment2 = props => {
+  const {navigation} = props;
   const {height, width} = useWindowDimensions();
   const selectedItems = useSelector(state => state.product).products;
   const styles = StyleSheet.create({
@@ -27,7 +28,10 @@ const Fragment2 = props => {
       <ListLoader
         Item={ListItem}
         data={selectedItems}
-        extItemProps={1}
+        extItemProps={{
+          type: 1,
+          navigate: params => navigation.navigate('screen2', params),
+        }}
         styles={styles.listContainer}
       />
       <View style={styles.bottomInfo}>

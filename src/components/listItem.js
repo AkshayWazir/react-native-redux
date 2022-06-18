@@ -5,12 +5,13 @@ import {
   StyleSheet,
   useWindowDimensions,
   Button,
+  Pressable,
 } from 'react-native';
 import {productActions} from '../redux';
 import {useDispatch} from 'react-redux';
 
 const ListItem = props => {
-  const {id, title, type, quantity = 0, details, subTitle} = props;
+  const {id, title, type, quantity = 0, details, subTitle, navigate} = props;
   const {height, width} = useWindowDimensions();
   const styles = StyleSheet.create({
     mainContainer: {
@@ -70,10 +71,23 @@ const ListItem = props => {
   }
 
   return (
-    <View style={styles.mainContainer}>
+    <Pressable
+      style={styles.mainContainer}
+      onPress={() => {
+        if (type !== 0) {
+          console.log('Reached');
+          navigate({
+            id: id,
+            title: title,
+            quantity: quantity,
+            subTitle: subTitle,
+            details: details,
+          });
+        }
+      }}>
       <Text style={styles.title}>{title}</Text>
       {optionLoader()}
-    </View>
+    </Pressable>
   );
 };
 
