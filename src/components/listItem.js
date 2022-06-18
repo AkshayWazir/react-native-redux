@@ -10,32 +10,32 @@ import {productActions} from '../redux';
 import {useDispatch} from 'react-redux';
 
 const ListItem = props => {
-  const {id, title, type, quantity = 0} = props;
-  const {height} = useWindowDimensions();
+  const {id, title, type, quantity = 0, details, subTitle} = props;
+  const {height, width} = useWindowDimensions();
   const styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
       height: height * 0.1,
       width: '80%',
-      marginHorizontal: '10%',
-      marginVertical: height * 0.2,
+      marginHorizontal: width * 0.01,
+      marginVertical: height * 0.01,
       justifyContent: 'space-between',
       alignItems: 'center',
       paddingHorizontal: 0,
       paddingBottom: 0,
+      backgroundColor: '#ffffff',
     },
     title: {
       flex: 1,
-      width: 200,
-      height: 100,
       alignSelf: 'flex-start',
       marginLeft: 20,
       marginTop: 20,
+      color: '#000',
     },
     bottomComp: {
       flex: 1,
-      width: 200,
-      height: 50,
+      color: '#000',
+      marginRight: '5%',
       alignSelf: 'flex-end',
     },
   });
@@ -48,7 +48,18 @@ const ListItem = props => {
           <Button
             style={styles.bottomComp}
             title="Add"
-            onPress={() => productActions.addProduct(dispatch, id)}
+            onPress={() =>
+              productActions.addProduct(dispatch, {
+                item: {
+                  id: id,
+                  title: title,
+                  quantity: quantity,
+                  subTitle: subTitle,
+                  details: details,
+                },
+                id: id,
+              })
+            }
           />
         );
       default:

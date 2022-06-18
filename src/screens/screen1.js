@@ -24,10 +24,7 @@ const Screen1 = props => {
         component={Frag1}
         options={{
           headerShown: false,
-          tabBarIcon: ({color, size}) => {
-            console.log(color);
-            return <DashIcon fill={color} height={20} width={20} />;
-          },
+          tabBarIcon: ({color, size}) => <DashIcon height={20} width={20} />,
         }}
       />
       <Tab.Screen
@@ -35,9 +32,7 @@ const Screen1 = props => {
         component={Frag2}
         options={{
           headerShown: false,
-          tabBarIcon: ({color, size}) => (
-            <ListsIcon fill={color} height={20} width={20} />
-          ),
+          tabBarIcon: ({color, size}) => <ListsIcon height={20} width={20} />,
         }}
       />
     </Tab.Navigator>

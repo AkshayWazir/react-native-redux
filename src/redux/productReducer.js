@@ -15,10 +15,16 @@ const productSlicer = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
+      let flag = 0;
+
       for (let i = 0; i < state.products.length; i++) {
-        if (state.products[i].id === action.payload) {
-          state.products[i].quanity += 1;
+        if (state.products[i].id === action.payload.id) {
+          state.products[i].quantity += 1;
+          flag = 1;
         }
+      }
+      if (flag === 0) {
+        state.products.push({...action.payload.item, quantity: 1});
       }
     },
     removeItem: (state, action) => {

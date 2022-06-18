@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 
 const Screen2 = props => {
-  console.log(props);
   const {route, navigation} = props;
 
   const styles = StyleSheet.create({
