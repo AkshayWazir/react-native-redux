@@ -74,8 +74,7 @@ const ListItem = props => {
     <Pressable
       style={styles.mainContainer}
       onPress={() => {
-        if (type !== 0) {
-          console.log('Reached');
+        if (type !== 0)
           navigate({
             id: id,
             title: title,
@@ -83,7 +82,6 @@ const ListItem = props => {
             subTitle: subTitle,
             details: details,
           });
-        }
       }}>
       <Text style={styles.title}>{title}</Text>
       {optionLoader()}

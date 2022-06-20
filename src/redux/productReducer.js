@@ -28,6 +28,7 @@ const productSlicer = createSlice({
       }
     },
     removeItem: (state, action) => {
+      console.log('Called negative');
       for (let i = 0; i < state.products.length; i++) {
         if (state.products[i].id === action.payload) {
           state.products[i].quanity =
@@ -38,5 +39,5 @@ const productSlicer = createSlice({
   },
 });
 
-export const {addItem} = productSlicer.actions;
+export const {addItem, removeItem} = productSlicer.actions;
 export default productSlicer.reducer;
